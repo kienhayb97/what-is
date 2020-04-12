@@ -1,35 +1,33 @@
-<div class="col-6 offset-3">
-  <div *ngIf="message">
-    <div class="alert alert-success">
-      <strong>Success!</strong> You have editted a language
-    </div>
-    <div class="form-group">
-      <input class="btn btn-primary btn-block" value="Edit a language" (click)="message = !message">
-    </div>
-    <div class="form-group">
-      <input class="btn btn-primary btn-block" value="Back to language list" routerLink="/language-list">
-    </div>
-  </div>
-  <form
-    *ngIf="!message"
-    name="form"
-    [formGroup]="languageForm"
-    (ngSubmit)="languageForm.valid && onSubmit()">
+<h2> delete</h2>
+<div class="col-6 offset-3" *ngIf="language">
+  <table class="table">
+    <tr>
+      <td>nhãn hiệu:</td>
+      <td>{{ language.name }}</td>
+    </tr>
+
+  </table>
+  <input class="btn btn-primary btn-block" value="Delete" data-toggle="modal" data-target="#exampleModal">
+  <input class="btn btn-primary btn-block" value="Back to list" routerLink="/language-list">
 
 
-    <div class="form-group">
-      <label>Language name</label>
-      <input type="text" class="form-control" formControlName="name">
-      <div class="alert-danger" *ngIf="languageForm.get('name').invalid && languageForm.get('name').touched"
-           style="color: red">
-        Language name must be at least 1 characters
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Lacolife </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure delete ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="deleteLanguage(language.id)" data-dismiss="modal">Save changes</button>
+        </div>
       </div>
     </div>
-    <div class="form-group">
-      <button class="btn btn-primary btn-block">Save</button>
-    </div>
-    <div class="form-group">
-      <input type="button" class="btn btn-primary btn-block" value="Cancel" routerLink="/language-list">
-    </div>
-  </form>
+  </div>
 </div>
