@@ -52,28 +52,28 @@
         Số lớn hơn hoặc bằng không
       </div>
     </div>
-    <div class="form-group">
-      <strong>Nhãn Hiệu</strong>
-      <div *ngFor="let language of languages">
-        <p>{{language.name}}</p>
-      </div>
-      <div class="form-inline">
-        <div style="padding: 0" class="nav-link dropdown-toggle" id="navbarDropdownSearchLanguages" role="button"
-             data-toggle="dropdown"
-             aria-haspopup="true" aria-expanded="false">
-          <input class="form-control" type="search" placeholder="Search nhãn hiệu..." aria-label="Search" #search
-                 (focusout)="search.value=''" (keyup)="searchLanguages($event.currentTarget)">
-        </div>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownSearchLanguages">
-          <div *ngFor="let language of languageList">
-            <a class="dropdown-item" (click)="addLanguage(language.id)">{{language.name}}</a>
-          </div>
-        </div>
-      </div>
-    </div>
+<!--    <div class="form-group">-->
+<!--      <strong>Nhãn Hiệu</strong>-->
+<!--      <div *ngFor="let language of languages">-->
+<!--        <p>{{language.name}}</p>-->
+<!--      </div>-->
+<!--      <div class="form-inline">-->
+<!--        <div style="padding: 0" class="nav-link dropdown-toggle" id="navbarDropdownSearchLanguages" role="button"-->
+<!--             data-toggle="dropdown"-->
+<!--             aria-haspopup="true" aria-expanded="false">-->
+<!--          <input class="form-control" type="search" placeholder="Search nhãn hiệu..." aria-label="Search" #search-->
+<!--                 (focusout)="search.value=''" (keyup)="searchLanguages($event.currentTarget)">-->
+<!--        </div>-->
+<!--        <div class="dropdown-menu" aria-labelledby="navbarDropdownSearchLanguages">-->
+<!--          <div *ngFor="let language of languageList">-->
+<!--            <a class="dropdown-item" (click)="addLanguage(language.id)">{{language.name}}</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
     <div class="form-group">
-      <strong>Thể tích</strong>
+      <strong>thể loại sản phẩm</strong>
       <div *ngIf="category">
         <p>{{category.name}}</p>
       </div>
@@ -92,25 +92,25 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <strong>Xuất xứ</strong>
-      <div *ngIf="publishing">
-        <p>{{publishing.name}}</p>
-      </div>
-      <div class="form-inline">
-        <div style="padding: 0" class="nav-link dropdown-toggle" id="navbarDropdownSearchPublishing" role="button"
-             data-toggle="dropdown"
-             aria-haspopup="true" aria-expanded="false">
-          <input class="form-control" type="search" placeholder="Search ngày sản xuất..." aria-label="Search" #search
-                 (focusout)="search.value=''" (keyup)="searchPublishing($event.currentTarget)">
-        </div>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownSearchPublishing">
-          <div *ngFor="let publish of publishingList">
-            <a class="dropdown-item" (click)="addPublishing(publish.id)">{{publish.name}}</a>
-          </div>
-        </div>
-      </div>
-    </div>
+<!--    <div class="form-group">-->
+<!--      <strong>Xuất xứ</strong>-->
+<!--      <div *ngIf="publishing">-->
+<!--        <p>{{publishing.name}}</p>-->
+<!--      </div>-->
+<!--      <div class="form-inline">-->
+<!--        <div style="padding: 0" class="nav-link dropdown-toggle" id="navbarDropdownSearchPublishing" role="button"-->
+<!--             data-toggle="dropdown"-->
+<!--             aria-haspopup="true" aria-expanded="false">-->
+<!--          <input class="form-control" type="search" placeholder="Search ngày sản xuất..." aria-label="Search" #search-->
+<!--                 (focusout)="search.value=''" (keyup)="searchPublishing($event.currentTarget)">-->
+<!--        </div>-->
+<!--        <div class="dropdown-menu" aria-labelledby="navbarDropdownSearchPublishing">-->
+<!--          <div *ngFor="let publish of publishingList">-->
+<!--            <a class="dropdown-item" (click)="addPublishing(publish.id)">{{publish.name}}</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
     <div class="form-group">
       <strong>Picture</strong>

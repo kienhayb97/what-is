@@ -1,15 +1,15 @@
 <div class="col-6 offset-3">
-  <h3 class="text-center">tạo mới thể tích</h3>
+  <h3 class="text-center">thêm loại sản phẩm</h3>
   <div *ngIf="message">
     <div class="alert alert-success">
-      <strong>Success!</strong> Bạn đã tạo một Thể tích mới
+      <strong>Success!</strong> Bạn đã tạo một loại mới
     </div>
     <div>
       <div class="form-group">
-        <input class="btn btn-primary btn-block" value="tạo một thể tích mới" (click)="message = !message">
+        <input class="btn btn-primary btn-block" value="tạo một loại mới" (click)="message = !message">
       </div>
       <div class="form-group">
-        <input class="btn btn-primary btn-block" value="danh cách thể tích" routerLink="/category-list">
+        <input class="btn btn-primary btn-block" value="danh sách" routerLink="/category-list">
       </div>
     </div>
   </div>
@@ -20,10 +20,10 @@
     (ngSubmit)="categoryForm.valid && onSubmit()"
     novalidate>
     <div class="form-group">
-      <label>thể tích</label>
+      <label>danh sách</label>
       <input type="text" class="form-control" formControlName="name"/>
       <div class="alert-danger" *ngIf="categoryForm.get('name').invalid && categoryForm.get('name').touched" style="color: aqua">
-        Category name must be ay least 1 characters
+         name must be ay least 1 characters
       </div>
     </div>
     <div class="form-group">

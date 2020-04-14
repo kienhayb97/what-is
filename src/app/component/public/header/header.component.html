@@ -1,12 +1,17 @@
-<div id="app" style="background-color: #efefef">
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top p-1">
+<div id="app" style="background-color: rgba(24,0,10,0.91)">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top p-1">
+    <div class="header-logo">
+      <a class="logo" href="#">
+        <img src="/assets/images/qtshop.png" alt="">
+      </a>
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
             aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
-
       <div class="nav-item dropdown">
+
         <div class="nav-link dropdown-toggle dropbtn" id="navbarDropdown1" role="button" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">
           <a href="/home" routerLink="home">Menu</a>
@@ -29,7 +34,7 @@
 
           <div class="dropdown-divider"></div>
           <div class="dropdown-2">
-            <a>Thể tích</a>
+            <a>sản phẩm</a>
             <div class="dropdown-content-2">
               <div *ngFor="let c of categoryList">
                 <a [routerLink]="['/book-category', c.id]">{{c.name}}</a>
@@ -37,23 +42,23 @@
             </div>
           </div>
 
-          <div class="dropdown-2">
-            <a>Nhãn Hiệu</a>
-            <div class="dropdown-content-2">
-              <div *ngFor="let l of languageList">
-                <a [routerLink]="['/book-language', l.id]">{{l.name}}</a>
-              </div>
-            </div>
-          </div>
+<!--          <div class="dropdown-2">-->
+<!--            <a>Nhãn Hiệu</a>-->
+<!--            <div class="dropdown-content-2">-->
+<!--              <div *ngFor="let l of languageList">-->
+<!--                <a [routerLink]="['/book-language', l.id]">{{l.name}}</a>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
 
-          <div class="dropdown-2">
-            <a>Xuất Xứ</a>
-            <div class="dropdown-content-2">
-              <div *ngFor="let p of publishingList">
-                <a [routerLink]="['/book-publishing', p.id]">{{p.name}}</a>
-              </div>
-            </div>
-          </div>
+<!--          <div class="dropdown-2">-->
+<!--            <a>Xuất Xứ</a>-->
+<!--            <div class="dropdown-content-2">-->
+<!--              <div *ngFor="let p of publishingList">-->
+<!--                <a [routerLink]="['/book-publishing', p.id]">{{p.name}}</a>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
       </div>
 
@@ -62,10 +67,9 @@
         <li class="nav-item">
          <div><a href="/home" class="nav-link" routerLink="home">Trang Chủ </a></div>
         </li>
-
-        <li>
-         <div> <a href="/about-us" class="nav-link" routerLink="about-us">Giới Thiệu</a></div>
-    </li>
+<!--        <li>-->
+<!--         <div> <a href="/about-us" class="nav-link" routerLink="about-us">Giới Thiệu</a></div>-->
+<!--        </li>-->
 
         <li class="nav-item" *ngIf="showAdminBoard">
           <div class="nav-item dropdown">
@@ -110,28 +114,28 @@
               <!--              </div>-->
 
               <div class="dropdown-2">
-                <a>thể tích</a>
+                <a>loại sản phẩm</a>
                 <div class="dropdown-content-2">
                   <a routerLink="/category-list">danh sách</a>
                   <a routerLink="/category-create">thêm mới</a>
                 </div>
               </div>
 
-              <div class="dropdown-2">
-                <a>nhãn hiệu</a>
-                <div class="dropdown-content-2">
-                  <a routerLink="/language-list">danh sách</a>
-                  <a routerLink="/language-create">thêm mới</a>
-                </div>
-              </div>
+<!--              <div class="dropdown-2">-->
+<!--                <a>nhãn hiệu</a>-->
+<!--                <div class="dropdown-content-2">-->
+<!--                  <a routerLink="/language-list">danh sách</a>-->
+<!--                  <a routerLink="/language-create">thêm mới</a>-->
+<!--                </div>-->
+<!--              </div>-->
 
-              <div class="dropdown-2">
-                <a>xuất xứ</a>
-                <div class="dropdown-content-2">
-                  <a routerLink="/publishing-list">danh sách</a>
-                  <a routerLink="/publishing-create">thêm mới</a>
-                </div>
-              </div>
+<!--              <div class="dropdown-2">-->
+<!--                <a>xuất xứ</a>-->
+<!--                <div class="dropdown-content-2">-->
+<!--                  <a routerLink="/publishing-list">danh sách</a>-->
+<!--                  <a routerLink="/publishing-create">thêm mới</a>-->
+<!--                </div>-->
+<!--              </div>-->
 
             </div>
           </div>
