@@ -1,10 +1,10 @@
 <div id="app" style="background-color: rgba(24,0,10,0.91)">
   <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top p-1">
-    <div class="header-logo">
-      <a class="logo" href="#">
-        <img src="/assets/images/qtshop.png" alt="">
-      </a>
-    </div>
+<!--    <div class="header-logo">-->
+<!--      <a class="logo" href="#">-->
+<!--        <img src="/assets/images/qt.png" alt="">-->
+<!--      </a>-->
+<!--    </div>-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
             aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -67,10 +67,16 @@
         <li class="nav-item">
          <div><a href="/home" class="nav-link" routerLink="home">Trang Chủ </a></div>
         </li>
-<!--        <li>-->
-<!--         <div> <a href="/about-us" class="nav-link" routerLink="about-us">Giới Thiệu</a></div>-->
-<!--        </li>-->
 
+        <li>
+         <div> <a href="/book-category/1" class="nav-link" routerLink="/book-category/1">Quần Âu</a></div>
+        </li>
+        <li>
+        <div> <a href="/book-category/4" class="nav-link" routerLink="/book-category/4">Áo Sơ Mi</a></div>
+      </li>
+        <li>
+          <div> <a href="/about-us" class="nav-link" routerLink="about-us">Blog</a></div>
+        </li>
         <li class="nav-item" *ngIf="showAdminBoard">
           <div class="nav-item dropdown">
             <div class="nav-link dropdown-toggle dropbtn" id="navbarDropdown" role="button" data-toggle="dropdown"
