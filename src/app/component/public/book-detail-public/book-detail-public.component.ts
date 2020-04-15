@@ -30,6 +30,7 @@ export class BookDetailPublicComponent implements OnInit {
       amount: number;
       authors: any[];
       bookPictures: IBookPicture[];
+
       category: any;
       description: string;
       id: number;
@@ -41,6 +42,7 @@ export class BookDetailPublicComponent implements OnInit {
     }();
     this.route.params.subscribe(param => {
       this.id = param.id;
+      console.log(this.book.bookPictures);
       this.bookService.getBook(this.id).subscribe(data => {
         this.book = data;
       }, error => console.log(error));

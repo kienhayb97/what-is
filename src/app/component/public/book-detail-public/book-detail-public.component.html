@@ -1,56 +1,64 @@
-<div class="container" *ngIf="book.bookPictures">
-  <div class="row">
-    <div class="col-6">
-      <div class="row">
-        <div class="col-md-12" align="center">
-          <img [src]="[book.bookPictures[0].src]" width="40%" height="auto"/>
-        </div>
-      </div>
-      <div class="row m-3">
-        <div class="col-md-3" *ngFor="let image of book.bookPictures,  index as i">
-          <img *ngIf="i<4" src="{{image.src}}" width="80px" height="100px">
+<div *ngIf="book">
+
+  <div class="container">
+    <h1></h1>
+    <div class="card">
+      <div class="container-fliud">
+        <div class="wrapper row">
+          <div class="preview col-md-6">
+            <div class="preview-pic tab-content">
+              <div class="tab-pane active" id="pic-1"><img [src]="book.bookPictures[0].src"/></div>
+              <div class="tab-pane" id="pic-2"><img src="{{book.bookPictures[1].src}}"/></div>
+              <div class="tab-pane" id="pic-3"><img src="{{book.bookPictures[2].src}}"/></div>
+              <div class="tab-pane" id="pic-4"><img src="{{book.bookPictures[3].src}}"/></div>
+              <div class="tab-pane" id="pic-5"><img src="{{book.bookPictures[3].src}}"/></div>
+            </div>
+            <ul class="preview-thumbnail nav nav-tabs" >
+              <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{{book.bookPictures[0].src}}" /></a></li>
+              <li><a data-target="#pic-2" data-toggle="tab"><img src="{{book.bookPictures[1].src}}" /></a></li>
+              <li><a data-target="#pic-3" data-toggle="tab"><img src="{{book.bookPictures[2].src}}" /></a></li>
+              <li><a data-target="#pic-4" data-toggle="tab"><img src="{{book.bookPictures[3].src}}" /></a></li>
+              <li><a data-target="#pic-5" data-toggle="tab"><img src="{{book.bookPictures[3].src}}" /></a></li>
+            </ul>
+
+          </div>
+          <div class="details col-md-6">
+            <h3 class="product-title">{{book.name}}</h3>
+            <div class="rating">
+              <div class="stars">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+              </div>
+              <span class="review-no">4100 reviews</span>
+            </div>
+            <p class="product-description">{{book.name}}</p>
+            <h4 class="price">Giá Hiện Tại :<span>{{book.price}} vnd</span></h4>
+            <!--          <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>-->
+            <h5 class="sizes">Số Lượng :
+              <span class="size" data-toggle="tooltip" title="small">{{book.amount}}</span>
+            </h5>
+            <div class="colors" routerLink="/home">Giới thiệu: <label> {{book.description}}</label>
+            </div>
+            <div *ngIf="book.name === book.name" class="action">
+                      <button class="add-to-cart btn btn-default" (click)="addCart(book.id)" data-toggle="modal"
+                              [attr.data-target]="'#addBookToCart' + book.id">Thêm vào giỏ hàng
+                      </button>
+
+              <!--              <button class="add-to-cart btn btn-default"-->
+<!--                      routerLink="/home/{{book.name}}/{{book.name}}/booking"-->
+<!--                      type="button">Booking Now-->
+<!--              </button>-->
+              <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div>
-        <h2>Thông tin chi tiết</h2>
-        <hr/>
-        <div>
-          <label><b>Tên sản phẩm : </b></label> {{book.name}}
-        </div>
-        <div>
-          <label><b>Giá : </b></label> {{book.price | currency: "VND" : "đ "}}
-        </div>
-        <div>
-          <label><b>Giới thiệu : </b></label> {{book.description}}
-        </div>
-        <div>
-          <label><b>số lượng : </b></label> {{book.amount}}
-        </div>
-<!--        <div>-->
-<!--          <label><b>xuất xứ : </b></label> {{book.publishing.name}}-->
-<!--        </div>-->
-        <div>
-          <label><b>thể tích: </b></label> {{book.category.name}}
-        </div>
-        <div>
-          <label><b>nhãn hiệu : </b></label>
-          <div *ngFor="let language of book.languages">{{language.name}}</div>
-        </div>
-      </div>
-      <div class="mb-0">
-        <button class="btn btn-outline-secondary" (click)="addCart(book.id)" data-toggle="modal"
-                [attr.data-target]="'#addBookToCart' + book.id">Thêm vào giỏ hàng
-        </button>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="book">
-    <app-book-comment [book]="book"></app-book-comment>
   </div>
 </div>
-
 <div [id]="'addBookToCart'+ book.id" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -69,3 +77,76 @@
     </div>
   </div>
 </div>
+
+<!--<div class="container" *ngIf="book.bookPictures">-->
+<!--  <div class="row">-->
+<!--    <div class="col-6">-->
+<!--      <div class="row">-->
+<!--        <div class="col-md-12" align="center">-->
+<!--          <img [src]="[book.bookPictures[1].src]" width="40%" height="auto"/>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="row m-3">-->
+<!--        <div class="col-md-3" *ngFor="let image of book.bookPictures,  index as i">-->
+<!--&lt;!&ndash;          <img *ngIf="i>1" src="{{image.src}}" width="80px" height="100px">&ndash;&gt;-->
+<!--          <img src="{{book.bookPictures[i].src}}" width="80px" height="100px">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-6">-->
+<!--      <div>-->
+<!--        <h2>Thông tin chi tiết</h2>-->
+<!--        <hr/>-->
+<!--        <div>-->
+<!--          <label><b>Tên sản phẩm : </b></label> {{book.name}}-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <label><b>Giá : </b></label> {{book.price | currency: "VND" : "đ "}}-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <label><b>Giới thiệu : </b></label> {{book.description}}-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <label><b>số lượng : </b></label> {{book.amount}}-->
+<!--        </div>-->
+<!--&lt;!&ndash;        <div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <label><b>xuất xứ : </b></label> {{book.publishing.name}}&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        <div>-->
+<!--          <label><b>thể tích: </b></label> {{book.category.name}}-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <label><b>nhãn hiệu : </b></label>-->
+<!--          <div *ngFor="let language of book.languages">{{language.name}}</div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="mb-0">-->
+<!--        <button class="btn btn-outline-secondary" (click)="addCart(book.id)" data-toggle="modal"-->
+<!--                [attr.data-target]="'#addBookToCart' + book.id">Thêm vào giỏ hàng-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div *ngIf="book">-->
+<!--    <app-book-comment [book]="book"></app-book-comment>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div [id]="'addBookToCart'+ book.id" class="modal" tabindex="-1" role="dialog">-->
+<!--  <div class="modal-dialog" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title">QT-SHOP </h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <p>Sản phẩm {{book.name}} đã được thêm vào giỏ hàng</p>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-danger" data-dismiss="modal">Ok</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
