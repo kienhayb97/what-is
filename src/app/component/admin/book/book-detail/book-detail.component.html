@@ -23,12 +23,12 @@
       <td>Days on the shelves:</td>
       <td>{{book.dateCreate}}</td>
     </tr>
-    <!--    <tr>-->
-    <!--      <td>Ngày sản xuất:</td>-->
-    <!--      <td>-->
-    <!--        <div *ngFor="let author of book.authors">{{author.name}}</div>-->
-    <!--      </td>-->
-    <!--    </tr>-->
+<!--        <tr>-->
+<!--          <td>size:</td>-->
+<!--          <td>-->
+<!--            <div *ngFor="let author of book.authors">{{author.name}}</div>-->
+<!--          </td>-->
+<!--        </tr>-->
 <!--    <tr>-->
 <!--      <td>nhãn hiệu:</td>-->
 <!--      <td>-->
@@ -47,7 +47,7 @@
       <td>Picture about Produce</td>
       <td>
         <div *ngFor="let picture of book.bookPictures, index as i"><img *ngIf="i!=0" src="{{picture.src}}"
-                                                                        width="200px"></div>
+                                                                        width="200px" height="auto"></div>
       </td>
     </tr>
   </table>
