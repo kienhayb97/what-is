@@ -1,11 +1,18 @@
 <div class="card">
-  <a [routerLink]="['/book-detail-public', book.id]"><img class="card-img-top" height="400px"
-                                                          [src]="book.bookPictures[0].src" alt="error"></a>
-  <div class="card-body">
-    <h5 class="card-title" [routerLink]="['/book-detail-public', book.id]">{{book.name}}</h5>
-    <h6 class="card-text">{{book.price | currency: "VND" : "đ "}}</h6>
-    <a *ngIf="book.amount > 0" (click)="addCart(book.id)" class="btn btn-outline-secondary" data-toggle="modal"
-       [attr.data-target]="'#addBookToCart' + book.id">Thêm vào giỏ hàng</a>
+    <a [routerLink]="['/book-detail-public', book.id]">
+      <div>
+        <img class="img-card" [src]="book.bookPictures[0].src" alt="sss">
+        <div class="card-body center-parent cursor-pointer">
+          <a *ngIf="book.amount > 0" (click)="addCart(book.id)" class="add-card" data-toggle="modal"
+             [attr.data-target]="'#addBookToCart' + book.id">
+            <img class="add-card-hover" src="assets/images/baseline_add_shopping_cart_white_18dp.png">
+          </a>
+        </div>
+      </div>
+    </a>
+  <div style="margin: 5px">
+    <h5 class="card-title text-center">{{book.name}}</h5>
+    <h6 class="card-text text-center">{{book.price | currency: "VND" : "đ "}}</h6>
   </div>
 </div>
 

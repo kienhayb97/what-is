@@ -1,0 +1,28 @@
+
+.add-card-hover {
+  display: none;
+}
+
+.card:hover {
+  .add-card-hover {
+    display: inline-block;
+  }
+
+  .add-card {
+    border-radius: 50%;
+    padding: 20px;
+    background: #ff264d;
+  }
+}
+
+.img-card {
+  display: block;
+  width: 100%;
+}
+
+.center-bottom {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}

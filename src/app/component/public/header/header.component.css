@@ -105,3 +105,9 @@ a {
 .navbar-toggler-icon {
   background-image: url('https://mdbootstrap.com/img/svg/hamburger3.svg?color=00FBD8');
 }
+
+.top-right {
+  position: absolute;
+  right: 0;
+  top: 5px;
+}

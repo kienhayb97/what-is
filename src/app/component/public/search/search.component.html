@@ -1,17 +1,12 @@
-<div class="nav-item dropdown">
+<div>
   <form class="form-inline">
-    <div style="padding: 0" class="nav-link dropdown-toggle" id="navbarDropdownSearch" role="button"
+    <div style="padding: 0" id="navbarDropdownSearch" role="button"
          data-toggle="dropdown"
          aria-haspopup="true" aria-expanded="false">
       <input class="form-control mr-sm-2" type="search" placeholder="tìm kiếm Sản phẩm..." aria-label="Search" #search
              (keyup)="searchBook($event.currentTarget)" (focusout)="search.value=''">
-      <button class="btn btn-outline-success my-2 my-sm-0" [routerLink]="['/search-advanced', this.nameSearch]">Tìm Kiếm</button>
     </div>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdownSearch">
-      <div *ngFor="let book of searchList">
-        <a class="dropdown-item" [routerLink]="['book-detail-public', book.id]">{{book.name}}</a>
-      </div>
-    </div>
+    <i [routerLink]="['/search-advanced', this.nameSearch]" style="margin-left: -35px" class="fa fa-search cursor-pointer" aria-hidden="true"></i>
   </form>
 </div>
 

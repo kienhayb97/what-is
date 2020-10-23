@@ -8,6 +8,7 @@ import {PublishingService} from '../../admin/publishing/publishing.service';
 import {ICategory} from '../../admin/category/ICategory';
 import {ILanguage} from '../../admin/language/ILanguage';
 import {IPublishing} from '../../admin/publishing/IPublishing';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -25,11 +26,13 @@ export class HeaderComponent implements OnInit {
   categoryList: ICategory[];
   languageList: ILanguage[];
   publishingList: IPublishing[];
+  isMobile = false;
 
   constructor(private tokenStorageService: TokenStorageService,
               private category: CategoryService,
               private language: LanguageService,
-              private publishing: PublishingService) {
+              private publishing: PublishingService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -54,5 +57,12 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.tokenStorageService.signOut();
     window.location.reload();
+  }
+
+  routerNavigate(router) {
+    this.router.navigate([router])
+  }
+  resizeWindow() {
+    this.isMobile = document.getElementById('nav_bar_home').clientWidth < 1000;
   }
 }

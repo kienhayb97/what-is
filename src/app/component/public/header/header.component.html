@@ -1,13 +1,14 @@
-<div id="app" style="background-color: rgba(24,0,10,0.91)">
-  <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top p-1">
-<!--    <div class="header-logo">-->
-<!--      <a class="logo" href="#">-->
-<!--        <img src="/assets/images/qt.png" alt="">-->
-<!--      </a>-->
-<!--    </div>-->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+<div id="app" style="background-color: rgba(24,0,10,0.91)" (window:resize)="resizeWindow()">
+  <nav *ngIf="isMobile" id="nav_bar_home" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top p-1">
+    <!--    <div class="header-logo">-->
+    <!--      <a class="logo" href="#">-->
+    <!--        <img src="/assets/images/qt.png" alt="">-->
+    <!--      </a>-->
+    <!--    </div>-->
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarToggleExternalContent"
             aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <i class="fa fa-bars" aria-hidden="true"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
       <div class="nav-item dropdown">
@@ -25,7 +26,7 @@
           <div class="dropdown-2">
             <a>Khoản Giá</a>
             <div class="dropdown-content-2">
-              <a routerLink="/book-price/1">0 đ  - 100.000 đ</a>
+              <a routerLink="/book-price/1">0 đ - 100.000 đ</a>
               <a routerLink="/book-price/2">100.000 đ - 200.000 đ</a>
               <a routerLink="/book-price/3">200.000 đ - 300.000 đ</a>
               <a routerLink="/book-price/4"> > 300.000</a>
@@ -42,40 +43,236 @@
             </div>
           </div>
 
-<!--          <div class="dropdown-2">-->
-<!--            <a>Nhãn Hiệu</a>-->
-<!--            <div class="dropdown-content-2">-->
-<!--              <div *ngFor="let l of languageList">-->
-<!--                <a [routerLink]="['/book-language', l.id]">{{l.name}}</a>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
+          <!--          <div class="dropdown-2">-->
+          <!--            <a>Nhãn Hiệu</a>-->
+          <!--            <div class="dropdown-content-2">-->
+          <!--              <div *ngFor="let l of languageList">-->
+          <!--                <a [routerLink]="['/book-language', l.id]">{{l.name}}</a>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->
 
-<!--          <div class="dropdown-2">-->
-<!--            <a>Xuất Xứ</a>-->
-<!--            <div class="dropdown-content-2">-->
-<!--              <div *ngFor="let p of publishingList">-->
-<!--                <a [routerLink]="['/book-publishing', p.id]">{{p.name}}</a>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
+          <!--          <div class="dropdown-2">-->
+          <!--            <a>Xuất Xứ</a>-->
+          <!--            <div class="dropdown-content-2">-->
+          <!--              <div *ngFor="let p of publishingList">-->
+          <!--                <a [routerLink]="['/book-publishing', p.id]">{{p.name}}</a>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->
         </div>
       </div>
 
 
       <ul class="navbar-nav mr-auto" routerLinkActive="active">
         <li class="nav-item">
-         <div><a href="/home" class="nav-link" routerLink="home">Trang Chủ </a></div>
+          <div><a (click)="routerNavigate('home')" class="nav-link" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+                  aria-controls="navbarToggleExternalContent" aria-label="Toggle navigation">Trang Chủ </a></div>
         </li>
 
         <li>
-         <div> <a href="/book-category/1" class="nav-link" routerLink="/book-category/1">Quần Âu</a></div>
+          <div><a (click)="routerNavigate('/book-category/1')" class="nav-link" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+                  aria-controls="navbarToggleExternalContent" aria-label="Toggle navigation">Quần Âu</a></div>
         </li>
         <li>
-        <div> <a href="/book-category/4" class="nav-link" routerLink="/book-category/4">Áo Sơ Mi</a></div>
-      </li>
+          <div><a (click)="routerNavigate('/book-category/4')" class="nav-link" data-toggle="collapse"
+                  data-target="#navbarToggleExternalContent"
+                  aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">Áo Sơ Mi</a></div>
+        </li>
         <li>
-          <div> <a href="/about-us" class="nav-link" routerLink="about-us">Blog</a></div>
+          <div><a (click)="routerNavigate('about-us')" class="nav-link" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+                  aria-controls="navbarToggleExternalContent" aria-label="Toggle navigation">Blog</a></div>
+        </li>
+
+
+        <li class="nav-item" *ngIf="showAdminBoard">
+          <div class="nav-item dropdown">
+            <div class="nav-link dropdown-toggle dropbtn" id="navbarDropdown" role="button" data-toggle="dropdown"
+                 aria-haspopup="true" aria-expanded="false">
+              tài khoản Admin
+            </div>
+            <div class="dropdown-content">
+
+              <div class="dropdown-2">
+                <a routerLink="/order-manager">Quản lý đơn hàng</a>
+              </div>
+
+              <div class="dropdown-2">
+                <a routerLink="/user-manager">Quản lý người dùng</a>
+              </div>
+
+              <div class="dropdown-divider"></div>
+
+              <div class="dropdown-2">
+                <a>Thanh toán</a>
+                <div class="dropdown-content-2">
+                  <a routerLink="/payment-list">danh sách</a>
+                  <a routerLink="/payment-create">thêm mới</a>
+                </div>
+              </div>
+
+              <div class="dropdown-2">
+                <a>Sản phẩm</a>
+                <div class="dropdown-content-2">
+                  <a routerLink="/book-list">danh sách</a>
+                  <a routerLink="/book-create">thêm mới</a>
+                </div>
+              </div>
+
+              <!--              <div class="dropdown-2">-->
+              <!--                <a>ngày sản xuất</a>-->
+              <!--                <div class="dropdown-content-2">-->
+              <!--                  <a routerLink="/author-list">danh sách</a>-->
+              <!--                  <a routerLink="/author-create">thêm mới</a>-->
+              <!--                </div>-->
+              <!--              </div>-->
+
+              <div class="dropdown-2">
+                <a>loại sản phẩm</a>
+                <div class="dropdown-content-2">
+                  <a routerLink="/category-list">danh sách</a>
+                  <a routerLink="/category-create">thêm mới</a>
+                </div>
+              </div>
+
+              <!--              <div class="dropdown-2">-->
+              <!--                <a>nhãn hiệu</a>-->
+              <!--                <div class="dropdown-content-2">-->
+              <!--                  <a routerLink="/language-list">danh sách</a>-->
+              <!--                  <a routerLink="/language-create">thêm mới</a>-->
+              <!--                </div>-->
+              <!--              </div>-->
+
+              <!--              <div class="dropdown-2">-->
+              <!--                <a>xuất xứ</a>-->
+              <!--                <div class="dropdown-content-2">-->
+              <!--                  <a routerLink="/publishing-list">danh sách</a>-->
+              <!--                  <a routerLink="/publishing-create">thêm mới</a>-->
+              <!--                </div>-->
+              <!--              </div>-->
+
+            </div>
+          </div>
+        </li>
+        <li class="nav-item" *ngIf="showModeratorBoard">
+          <a href="/mod" class="nav-link" routerLink="mod">Ban điều hành</a>
+        </li>
+      </ul>
+
+
+      <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav mr-auto" *ngIf="!isLoggedIn">
+          <li class="nav-item">
+            <a routerLink="/register" class="nav-link">Đăng Ký</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/login" class="nav-link">Đăng Nhập</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownProfile" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">{{ username }}</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownProfile" style="left: -50px">
+              <a class="dropdown-item" style="color: #111111" routerLink="/profile">Hồ sơ</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" style="color: #111111" routerLink="/change-password">Đổi mật khẩu</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" style="color: #111111" routerLink="/order-list">Danh sách đặt hàng</a>
+            </div>
+
+          </li>
+          <li class="nav-item">
+            <a href class="nav-link" (click)="logout()">Đăng xuất</a>
+          </li>
+        </ul>
+      </ul>
+    </div>
+    <app-search></app-search>
+    <app-cart></app-cart>
+
+  </nav>
+
+
+  <nav *ngIf="!isMobile" id="nav_bar_home" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top p-1">
+    <!--    <div class="header-logo">-->
+    <!--      <a class="logo" href="#">-->
+    <!--        <img src="/assets/images/qt.png" alt="">-->
+    <!--      </a>-->
+    <!--    </div>-->
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarToggleExternalContent"
+            aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+      <div class="nav-item dropdown">
+
+        <div class="nav-link dropdown-toggle dropbtn" id="navbarDropdown1" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+          <a href="/home" routerLink="home">Menu</a>
+        </div>
+        <div class="dropdown-content">
+          <a routerLink="/book-public">Tất Cả Sảm PHẩm</a>
+          <a routerLink="/book-new">Sản phẩm Mới</a>
+          <a routerLink="/book-hot">Sản Phẩm Hot</a>
+
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-2">
+            <a>Khoản Giá</a>
+            <div class="dropdown-content-2">
+              <a routerLink="/book-price/1">0 đ - 100.000 đ</a>
+              <a routerLink="/book-price/2">100.000 đ - 200.000 đ</a>
+              <a routerLink="/book-price/3">200.000 đ - 300.000 đ</a>
+              <a routerLink="/book-price/4"> > 300.000</a>
+            </div>
+          </div>
+
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-2">
+            <a>sản phẩm</a>
+            <div class="dropdown-content-2">
+              <div *ngFor="let c of categoryList">
+                <a [routerLink]="['/book-category', c.id]">{{c.name}}</a>
+              </div>
+            </div>
+          </div>
+
+          <!--          <div class="dropdown-2">-->
+          <!--            <a>Nhãn Hiệu</a>-->
+          <!--            <div class="dropdown-content-2">-->
+          <!--              <div *ngFor="let l of languageList">-->
+          <!--                <a [routerLink]="['/book-language', l.id]">{{l.name}}</a>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->
+
+          <!--          <div class="dropdown-2">-->
+          <!--            <a>Xuất Xứ</a>-->
+          <!--            <div class="dropdown-content-2">-->
+          <!--              <div *ngFor="let p of publishingList">-->
+          <!--                <a [routerLink]="['/book-publishing', p.id]">{{p.name}}</a>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->
+        </div>
+      </div>
+
+
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+        <li class="nav-item">
+          <div><a (click)="routerNavigate('home')" class="nav-link" data-toggle="collapse" >Trang Chủ </a></div>
+        </li>
+
+        <li>
+          <div><a (click)="routerNavigate('/book-category/1')" class="nav-link" data-toggle="collapse">Quần Âu</a></div>
+        </li>
+        <li>
+          <div><a (click)="routerNavigate('/book-category/4')" class="nav-link" data-toggle="collapse">Áo Sơ Mi</a></div>
+        </li>
+        <li>
+          <div><a (click)="routerNavigate('about-us')" class="nav-link" data-toggle="collapse">Blog</a></div>
         </li>
         <li class="nav-item" *ngIf="showAdminBoard">
           <div class="nav-item dropdown">
@@ -127,21 +324,21 @@
                 </div>
               </div>
 
-<!--              <div class="dropdown-2">-->
-<!--                <a>nhãn hiệu</a>-->
-<!--                <div class="dropdown-content-2">-->
-<!--                  <a routerLink="/language-list">danh sách</a>-->
-<!--                  <a routerLink="/language-create">thêm mới</a>-->
-<!--                </div>-->
-<!--              </div>-->
+              <!--              <div class="dropdown-2">-->
+              <!--                <a>nhãn hiệu</a>-->
+              <!--                <div class="dropdown-content-2">-->
+              <!--                  <a routerLink="/language-list">danh sách</a>-->
+              <!--                  <a routerLink="/language-create">thêm mới</a>-->
+              <!--                </div>-->
+              <!--              </div>-->
 
-<!--              <div class="dropdown-2">-->
-<!--                <a>xuất xứ</a>-->
-<!--                <div class="dropdown-content-2">-->
-<!--                  <a routerLink="/publishing-list">danh sách</a>-->
-<!--                  <a routerLink="/publishing-create">thêm mới</a>-->
-<!--                </div>-->
-<!--              </div>-->
+              <!--              <div class="dropdown-2">-->
+              <!--                <a>xuất xứ</a>-->
+              <!--                <div class="dropdown-content-2">-->
+              <!--                  <a routerLink="/publishing-list">danh sách</a>-->
+              <!--                  <a routerLink="/publishing-create">thêm mới</a>-->
+              <!--                </div>-->
+              <!--              </div>-->
 
             </div>
           </div>
@@ -155,7 +352,7 @@
       <ul class="navbar-nav ml-auto">
         <app-search></app-search>
         <app-cart></app-cart>
-        <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+        <ul class="navbar-nav mr-auto" *ngIf="!isLoggedIn">
           <li class="nav-item">
             <a routerLink="/register" class="nav-link">Đăng Ký</a>
           </li>
@@ -163,7 +360,6 @@
             <a routerLink="/login" class="nav-link">Đăng Nhập</a>
           </li>
         </ul>
-
         <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdownProfile" role="button" data-toggle="dropdown"
@@ -183,7 +379,16 @@
         </ul>
       </ul>
     </div>
+
   </nav>
+
+
+
+
+
+
+
+
+
 </div>
-<div style=" height: 48px"></div>
 
